@@ -1,0 +1,101 @@
+ask_subject = True
+prefer_plaintext = True
+initial_command = search tag:inbox and not tag:lists and tag:unread; search tag:inbox and tag:lists and tag:unread; bnext
+theme = solarized_dark
+show_count_in_tag_list = messages
+complete_matching_abook_only = True
+auto_replyto_mailinglist = True
+
+[accounts]
+
+  [[ibotty]]
+      realname = Tob
+      address = me@ibotty.net
+      alias_regexp = .\+@ibotty.net
+      sendmail_command = msmtpq --account=ibotty -t
+      sent_box = maildir:///home/tob/.mail/ibotty/INBOX
+      draft_box = maildir:///home/tob/.mail/ibotty/Drafts
+      encrypt_by_default = all
+      encrypt_to_self = True
+      sign_by_default = True
+      gpg_key = E1769155
+      [[[abook]]]
+        type = shellcommand
+        command = abook --mutt-query
+        regexp = '^(?P<email>[^@]+@[^\t]+)\t+(?P<name>[^\t]+)'
+        ignorecase = True
+
+  [[butter]]
+      realname = Tobias Florek
+      address = tob@butter.sh
+      aliases = tob@bytesandbutter.de,tobias.florek@butter.sh,tobias.florek@bytesandbutter.de
+      alias_regexp = (tob|tobias\.florek)\+.\+@(butter\.sh|bytesandbutter\.de)
+      sendmail_command = msmtpq --account=butter -t
+      sent_box = maildir:///home/tob/.mail/butter/INBOX
+      draft_box = maildir:///home/tob/.mail/butter/Drafts
+      encrypt_by_default = all
+      encrypt_to_self = True
+      sign_by_default = True
+      gpg_key = E1769155
+      [[[abook]]]
+        type = shellcommand
+        command = abook --mutt-query
+        regexp = '^(?P<email>[^@]+@[^\t]+)\t+(?P<name>[^\t]+)'
+        ignorecase = True
+
+
+[bindings]
+
+  N = search tag:new
+  T = search tag:todo
+  t = toggletags todo
+  shift tab = bprevious; refresh
+  tab = bnext; refresh
+
+  I = search tag:inbox and not tag:deleted and not tag:lists and not tag:ad
+
+  q =
+  Q = exit
+
+  [[search]]
+      & = toggletags deleted
+
+  [[envelope]]
+      e = toggleencrypt
+
+
+[tags]
+  [[inbox]]
+      translated = ➤
+
+  [[unread]]
+      translated = ✉
+      normal = "","","","","light red",""
+
+  [[sent]]
+      translated = ↗
+
+  [[attachment]]
+      translated = 📎
+
+  [[replied]]
+      translated = ⏎
+
+  [[encrypted]]
+      translated = 🔑 # ⚷
+
+  [[signed]]
+      translated = ®
+
+  [[flagged]]
+      translated = ⚑
+       normal = '','','light red','','dark red',''
+
+  [[lists/.*]]
+      translation = lists/(.*), l/\1
+
+  [[lists]]
+      translated = ""
+
+  [[todo]]
+      translated = TODO
