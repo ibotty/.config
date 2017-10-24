@@ -1,0 +1,31 @@
+[user]
+	email = tob@butter.sh
+	name = Tobias Florek
+[push]
+	default = simple
+[url "git://github.com/ghc/packages-"]
+	insteadOf = git://github.com/ghc/packages/
+[url "http://github.com/ghc/packages-"]
+	insteadOf = http://github.com/ghc/packages/
+[url "https://github.com/ghc/packages-"]
+	insteadOf = https://github.com/ghc/packages/
+[url "ssh://git@github.com/ghc/packages-"]
+	insteadOf = ssh://git@github.com/ghc/packages/
+[url "git@github.com:/ghc/packages-"]
+	insteadOf = git@github.com:/ghc/packages/
+[color]
+	ui = auto
+[rebase]
+	autoSquash = true
+	autoStash = true
+[merge]
+	tool = nvim
+[mergetool "nvim"]
+	cmd = exec nvim -d $LOCAL $MERGED $REMOTE
+[branch]
+	autoSetupRebase = always
+	autoSetupMerge = true
+[help]
+	autoCorrect = -1
+[sendemail]
+    chainReplyTo = false

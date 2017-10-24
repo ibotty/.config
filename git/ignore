@@ -1,0 +1,11 @@
+*.swp
+*.swo
+*.un~
+.cabal-sandbox
+cabal.sandbox.config
+dist
+codex.tags
+tags
+TAGS
+.stack-work
+__pycache__
