@@ -1,0 +1,1 @@
+--convert-subs srt --no-call-home --prefer-free-formats --ignore-errors --continue --no-mtime --all-subs --add-metadata --xattrs -f 'a1-mp4-2-1/((bestvideo+bestaudio/best)[protocol^=http]/(bestaudio+bestvideo/best))[height <? 720]'
