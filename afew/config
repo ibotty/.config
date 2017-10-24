@@ -1,0 +1,170 @@
+#[SpamFilter]
+
+#[ClassifyingFilter]
+
+# did not work. wanted to kill all the mail
+#[KillThreadsFilter]
+
+[ListMailsFilter]
+
+[HeaderMatchingFilter.1]
+header = List-ID
+pattern = haskell
+tags = +haskell
+
+[HeaderMatchingFilter.2]
+header = X-Trac-Project
+pattern = GHC
+tags = +lists/ghc-trac;+lists;+haskell
+
+[HeaderMatchingFilter.3]
+header = From
+pattern = postgres@cooperpress.com
+tags = +lists/postgres-weekly-news;+lists;-lists/0618f6a79d6bb9675f313ceb2
+
+[HeaderMatchingFilter.4]
+header = From
+pattern = news@budoten.com
+tags = +ad;+ad/budoten
+
+[HeaderMatchingFilter.5]
+header = List-Id
+pattern = <(?P<list_id>.*)\.lists\.openshift\.redhat\.com>
+tags = +openshift;+lists/openshift-{list_id};-lists/{list_id}
+
+[HeaderMatchingFilter.6]
+header = List-Id
+pattern = <(?P<list_id>.*)\.(.*)\.crsend\.com>
+tags = -lists/{list_id}
+
+[Filter.1]
+query = tag:lists/haskell-cafe or tag:lists/haskell or tag:lists/haskell-wai or tag:lists/haskell-pipes or tag:lists/karamaan-opaleye or tag:lists/hi or tag:lists/aeson or tag:lists/extensible-effects or tag:lists/scotty or tag:lists/hdevtools or tag:lists/ctrex or tag:lists/haskeleton or tag:lists/api-tools or tag:lists/monad-classes tag:lists/hi
+tags = +haskell
+
+[Filter.2]
+query = tag:lists/libraries
+tags = +lists/haskell-libraries;-lists/libraries;+haskell
+
+[Filter.3]
+query = tag:lists/web-devel
+tags = +lists/haskell-web-devel;-lists/web-devel;+haskell
+
+[Filter.4]
+query = tag:lists/database-devel
+tags = +lists/haskell-database-devel;-lists/database-devel;+haskell
+
+[Filter.5]
+query = folder:butter/spam
+tags = +spam
+
+[Filter.6]
+query = folder:butter/ad
+tags = +ad;-inbox
+
+[Filter.7]
+query = folder:butter/syslog
+tags = +syslog
+
+[Filter.8]
+query = folder:butter/music
+tags = +music
+
+[Filter.9]
+query = from:ebay@ebay.de and (subject:("Neu: " "Artikelbezeichnung und") or subject:("Neu: " "Entfernung: ") or subject:"Standort in:" or subject:" Neu: ")
+tags = +ad;+ad/ebay
+
+[Filter.10]
+query = tag:lists/306 and from:schlundtech
+tags = -lists/306;+ad;+ad/schlundtech
+
+[Filter.11]
+query = tag:lists/f6b97bdab59109827c9d7f4ae and from:dergepflegtemann
+tags = -lists/f6b97bdab59109827c9d7f4ae;+ad;+ad/dergepflegtemann
+
+[Filter.12]
+query = tag:lists/1-1555 and from:kalk-laden
+tags = -lists/1-1555;+ad;+ad/kalk-laden
+
+[Filter.13]
+query = tag:lists/16b832d9ad4b28edf261f34df
+tags = -lists/16b832d9ad4b28edf261f34df;+lists/smashing-magazine
+
+[Filter.14]
+query = tag:lists/iaspvh-irf1cy0 and from:buch.de
+tags = -lists/iaspvh-irf1cy0;+ad;+ad/buch.de
+
+[Filter.15]
+query = tag:lists/notebooksbilliger
+tags = -lists/notebooksbilliger;+ad;+ad/notebooksbilliger
+
+[Filter.16]
+query = tag:lists/9438934 and from:lekker
+tags = -lists/9438934;+ad;+ad/lekker
+
+[Filter.17]
+query = tag:lists/5cb712992a906406c5eae28a7 and from:trello
+tags = -lists/5cb712992a906406c5eae28a7;+ad;+ad/trello
+
+[Filter.18]
+query = tag:lists/979c70339150d05eec1531104 and from:openshift
+tags = +lists/openshift-newsletter;-lists/979c70339150d05eec1531104
+
+[Filter.19]
+query = (tag:lists/5 or tag:lists/24 or tag:lists/22) and from:ikea
+tags = -lists;-lists/5;-lists/24;-lists/22;+ad;+ad/ikea
+
+[Filter.20]
+query = tag:lists/5436c627608a9e848175be498 and from:lostmy.name
+tags = -lists;-lists/5436c627608a9e848175be498;+ad;+ad/lostmyname
+
+[Filter.21]
+query = from:kundenservice@markt-nachrichten.eu
+tags = +spam;-lists;-lists/5391;-unread
+
+[Filter.22]
+query = from:discover@airbnb.com
+tags = +ad;+ad/airbnb
+
+[Filter.23]
+query = tag:lists/fulldisclosure or tag:lists/reflect-info or tag:lists/libvir-list or tag:lists/varnish-misc or tag:lists/pgsql-novice
+tags = -new
+
+[Filter.24]
+query = from:info@anost.net and subject:news
+tags = +ad;+ad/anost
+
+[Filter.25]
+query = from:newsletter@itsco.de
+tags = +ad;+ad/itsco
+
+[Filter.26]
+query = tag:lists/a11a00123f1f12e4de088e733
+tags = +music/incredible-herrengedeck;+music;-lists/a11a00123f1f12e4de088e733;-lists
+
+[Filter.27]
+query = from:noreply@kinderzeit.de
+tags = +lists/kinderzeit
+
+[Filter.28]
+query = from:news.eis.de or julia@eis.de
+tags = +ad/eis.de;+ad
+
+[Filter.29]
+query = tag:ad or tag:spam
+tags = -lists;-new
+
+# remove tag:new 
+[InboxFilter]
+
+[SentMailsFilter]
+sent_tag: sent
+to_transforms = "haskell-cafe@haskell.org:sent;lists;lists/haskell-cafe;haskell libraries@haskell.org:sent;lists;lists/haskell-libraries;haskell reflect-info@listi.jpberlin.de:sent;lists;lists/reflect-info fulldisclosure@seclists.org:sent;lists;lists/full-disclosure haskell-pipes@googlegroups.com:haskell;lists/haskell-pipes;lists"
+
+# un-'tag:inbox'es mails sent by me
+[ArchiveSentMailsFilter]
+
+[MailMover]
+rename = true
+folders = ibotty/INBOX butter/INBOX
+ibotty/INBOX = 'not tag:inbox and not tag:haskell and not tag:spam and not tag:ad':ibotty/Archives 'tag:spam':butter/spam 'tag:haskell':ibotty/lists/haskell 'tag:ad':butter/Archives/ad
+butter/INBOX = 'not tag:inbox and not tag:spam and not tag:ad':butter/Archives 'tag:spam':butter/spam 'tag:ad':butter/Archives/ad
