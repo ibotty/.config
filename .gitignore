@@ -9,3 +9,4 @@
 /beets/library.db
 /beets/state.pickle
 /pulse/
+*.pyc
