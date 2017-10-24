@@ -12,3 +12,4 @@
 *.pyc
 /chromium/
 /mimeapps.list
+/Empathy/geometry.ini
