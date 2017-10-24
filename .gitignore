@@ -5,3 +5,6 @@
 /yelp/yelp.cfg
 /monitors.xml
 /monitors-v1-backup.xml
+/beets/import.log
+/beets/library.db
+/beets/state.pickle
