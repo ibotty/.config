@@ -60,7 +60,7 @@ filetype plugin indent on
 
 " language server config
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rls'],
     \ 'yaml': ['node', '~/node_modules/yaml-language-server/out/server/src/server.js', '--stdio'],
     \ 'dockerfile': ['~/node_modules/.bin/docker-langserver', '--stdio'],
     \ }
@@ -175,7 +175,8 @@ set formatoptions+=cn1jq
 set ignorecase
 set smartcase
 
-autocmd! BufWritePost * Neomake
+" call neomake when reading, writing, and on normal-made changes (after 750ms)
+call neomake#configure#automake('rnw', 750)
 
 " let g:deoplete#enable_at_startup=1
 
@@ -188,29 +189,32 @@ autocmd QuickFixCmdPost *grep* cwindow
 " autorun rustfmt on save
 "let g:rustfmt_autosave = 1
 
-function! neomake#makers#ft#rust#rustc()
-    return {
-        \ 'exe': 'cargo',
-        \ 'args': ['rustc', '--', '-Zno-trans', '-Zincremental=/home/tob/.cache/rustc'],
-        \ 'append_file': 0,
-        \ 'errorformat':
-            \ '%-Gerror: aborting due to previous error,'.
-            \ '%-Gerror: aborting due to %\\d%\\+ previous errors,'.
-            \ '%-Gerror: Could not compile `%s`.,'.
-            \ '%Eerror[E%n]: %m,'.
-            \ '%Eerror: %m,'.
-            \ '%-Gwarning: the option `Z` is unstable %s,'.
-            \ '%-Gwarning: file-system error deleting outdated file %s,'.
-            \ '%Wwarning: %m,'.
-            \ '%Inote: %m,'.
-            \ '%-Z\ %#-->\ %f:%l:%c,'.
-            \ '%G\ %#\= %*[^:]: %m,'.
-            \ '%G\ %#|\ %#%\\^%\\+ %m,'.
-            \ '%I%>help:\ %#%m,'.
-            \ '%Z\ %#%m,'.
-            \ '%-G%s',
-        \ }
-endfunction
+" neomake: disable rustc and cargo makers
+let g:neomake_rust_enabled_makers = []
+
+" function! neomake#makers#ft#rust#rustc()
+"     return {
+"         \ 'exe': 'cargo',
+"         \ 'args': ['rustc', '--', '-Zno-trans', '-Zincremental=/home/tob/.cache/rustc'],
+"         \ 'append_file': 0,
+"         \ 'errorformat':
+"             \ '%-Gerror: aborting due to previous error,'.
+"             \ '%-Gerror: aborting due to %\\d%\\+ previous errors,'.
+"             \ '%-Gerror: Could not compile `%s`.,'.
+"             \ '%Eerror[E%n]: %m,'.
+"             \ '%Eerror: %m,'.
+"             \ '%-Gwarning: the option `Z` is unstable %s,'.
+"             \ '%-Gwarning: file-system error deleting outdated file %s,'.
+"             \ '%Wwarning: %m,'.
+"             \ '%Inote: %m,'.
+"             \ '%-Z\ %#-->\ %f:%l:%c,'.
+"             \ '%G\ %#\= %*[^:]: %m,'.
+"             \ '%G\ %#|\ %#%\\^%\\+ %m,'.
+"             \ '%I%>help:\ %#%m,'.
+"             \ '%Z\ %#%m,'.
+"             \ '%-G%s',
+"         \ }
+" endfunction
 
 let g:necoghc_enable_detailed_browse = 1
 " don't run hindent on every save
