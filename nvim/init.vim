@@ -249,3 +249,6 @@ let g:fzf_command_prefix = 'Fzf'
 
 " use ripgrep for :grep
 set grepprg=rg\ --vimgrep
+
+" map esc in terminal mode to get into normal mode
+tnoremap <Esc> <C-\><C-n>
