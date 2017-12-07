@@ -9,3 +9,5 @@ tags
 TAGS
 .stack-work
 __pycache__
+Cargo.lock
+/target
