@@ -11,3 +11,5 @@ TAGS
 __pycache__
 Cargo.lock
 /target
+.kubeconfig
+.envrc
