@@ -7,8 +7,9 @@ _set_local_kubeconfig() {
     fi
 
     # don't process last dir again
-    if [[ "$_LOCAL_KUBECONFIG_LAST_WD" == "$PWD" ]]; then
-        return
+    if [[ "$_LOCAL_KUBECONFIG_LAST_WD" == "$PWD" ]] || \
+        [[ "$PWD" == "$_LOCAL_KUBECONFIG_SET" ]]; then
+            return
     fi
 
     # if not within a local kubeconfig dir unset KUBECONFIG
