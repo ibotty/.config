@@ -12,7 +12,7 @@ _set_local_kubeconfig() {
     fi
 
     # if not within a local kubeconfig dir unset KUBECONFIG
-    if ! [[ "$PWD" == "${_LOCAL_KUBECONFIG_LAST_WD}"* ]]; then
+    if ! [[ "$PWD" == "${_LOCAL_KUBECONFIG_SET}"* ]]; then
         echo "unsetting KUBECONFIG"
         unset _LOCAL_KUBECONFIG_SET
         unset KUBECONFIG
@@ -20,7 +20,7 @@ _set_local_kubeconfig() {
 
     if [[ -f .kubeconfig ]]; then
         echo "setting kubeconfig to $PWD/.kubeconfig"
-        _LOCAL_KUBECONFIG_SET=
+        _LOCAL_KUBECONFIG_SET="$PWD"
         export KUBECONFIG=$PWD/.kubeconfig
     fi
 
