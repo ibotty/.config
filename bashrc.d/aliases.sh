@@ -14,3 +14,7 @@ alias urlencode='python3 -c "import sys, urllib.parse as u; \
 # shellcheck disable=1004
 alias qpdecode='python3 -c "import sys, quopri; \
     print(quopri.decodestring(sys.argv[1]).decode(\"utf-8\"))"'
+
+function err() {
+    echo "$@" >&2
+}
