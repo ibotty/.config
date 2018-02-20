@@ -5,3 +5,5 @@
 export LESS=FRSX
 
 alias rtrim="sed -i 's/\s\+$//g'"
+
+alias sudorsync="rsync --rsync-path='sudo rsync'"
