@@ -35,5 +35,5 @@ _local_kubeconfig_hook() {
 }
 
 if ! [[ "$PROMPT_COMMAND" =~ _local_kubeconfig_hook ]]; then
-    PROMPT_COMMAND="local_kubeconfig_hook;$PROMPT_COMMAND";
+    PROMPT_COMMAND="_local_kubeconfig_hook;$PROMPT_COMMAND";
 fi
