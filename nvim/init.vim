@@ -63,10 +63,9 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rls'],
     \ 'yaml': ['node', '~/node_modules/yaml-language-server/out/server/src/server.js', '--stdio'],
     \ 'dockerfile': ['~/node_modules/.bin/docker-langserver', '--stdio'],
+    \ 'ruby': ['~/bin/language_server-ruby'],
+    \ 'haml': ['~/bin/language_server-ruby'],
     \ }
-" buggy
-"    \ 'ruby': ['~/bin/language_server-ruby'],
-"    \ 'haml': ['~/bin/language_server-ruby'],
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
